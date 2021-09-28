@@ -10,12 +10,14 @@ class Application:
 
         self.width, self.height = size
         self.root.geometry(f"{self.width}x{self.height}")
+        self.root.bind("<Key>", self.__handle_key_press)
 
         self.fps = fps
 
         self.__widgets = []
         self.__task_list = []
         self.__game_objects = []
+        self.__action_listeners = []
 
         self.root.after(int((1 / self.fps) * 1000), self.new_frame)
 
@@ -64,6 +66,14 @@ class Application:
     def add_object(self, object):
         self.__game_objects.append(object)
         self.__task_list.append(object.update)
+
+    def add_action_listener(self, obj):
+        self.__action_listeners.append(obj)
+
+    def __handle_key_press(self, event):
+        for action_listener in self.__action_listeners:
+            if action_listener.key == event.char:
+                action_listener.action()
 
 
 class Frame:
