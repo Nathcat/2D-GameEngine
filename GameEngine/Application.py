@@ -75,6 +75,9 @@ class Application:
             if action_listener.key == event.char:
                 action_listener.action()
 
+    def bind_special_key(self, key_name, f):
+        self.root.bind(key_name, f)
+
 
 class Frame:
     def __init__(self, size):
