@@ -1,4 +1,4 @@
 # 2D-GameEngine
 A 2D game engine written in Python.
 
-By Nathcat :P
+For an example of basic usage, see test.py.
