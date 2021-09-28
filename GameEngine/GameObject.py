@@ -22,3 +22,9 @@ class GameObject:
                 out = component.image
 
         return out
+
+    def __getitem__(self, index):
+        return self.__components[index]
+
+    def __len__(self):
+        return len(self.__components)
